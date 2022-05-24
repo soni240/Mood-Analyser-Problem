@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC3_Custom_Exception
+namespace UC4_Default_Constructor
 {
-    internal class MoodAnalyzer
+    internal class MoodAnalyser
     {
         string message;
-        public MoodAnalyzer(string message)
+        public MoodAnalyser(string message)
         {
             this.message = message;
         }
