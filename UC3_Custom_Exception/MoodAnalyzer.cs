@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC2_Handle_Exception
+namespace UC3_Custom_Exception
 {
     internal class MoodAnalyzer
     {
@@ -18,16 +18,18 @@ namespace UC2_Handle_Exception
         {
             try
             {
+                if (message.Equals(string.Empty))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
+                }
 
-                if (message.ToLower().Contains("happy"))
+                else if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
-                    Console.WriteLine("i am in happy mood");
                 }
                 else
                 {
                     return "sad";
-                    Console.WriteLine("i am in sad mood");
                 }
             }
             catch (NullReferenceException)
