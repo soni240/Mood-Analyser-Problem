@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC4_Default_Constructor
+namespace UC5_Parameter_Constructor
 {
     internal class CustomException:Exception
     {
@@ -19,6 +19,5 @@ namespace UC4_Default_Constructor
         }
     }
 }
-
     
 

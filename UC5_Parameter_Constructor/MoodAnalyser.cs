@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC4_Default_Constructor
+namespace UC5_Parameter_Constructor
 {
     internal class MoodAnalyser
     {
         string message;
+
+        public MoodAnalyser()
+        {
+        }
+
         public MoodAnalyser(string message)
         {
             this.message = message;
@@ -34,7 +39,7 @@ namespace UC4_Default_Constructor
             }
             catch (NullReferenceException)
             {
-                return "happy";
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, "Mood should not be null");
 
             }
         }
