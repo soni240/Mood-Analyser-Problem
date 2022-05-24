@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UC5_Parameter_Constructor
+namespace UC6_Invoke_Method
 {
     internal class MoodAnalyser
     {
         string message;
-
         public MoodAnalyser()
         {
+            Console.WriteLine("Default constructor");
         }
-
         public MoodAnalyser(string message)
         {
             this.message = message;
@@ -27,7 +26,6 @@ namespace UC5_Parameter_Constructor
                 {
                     throw new CustomException(CustomException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
                 }
-
                 else if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
@@ -40,7 +38,6 @@ namespace UC5_Parameter_Constructor
             catch (NullReferenceException)
             {
                 throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, "Mood should not be null");
-
             }
         }
     }

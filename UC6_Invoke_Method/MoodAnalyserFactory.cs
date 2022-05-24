@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace UC5_Parameter_Constructor
+namespace UC6_Invoke_Method
 {
     internal class MoodAnalyserFactory
     {
@@ -33,7 +33,7 @@ namespace UC5_Parameter_Constructor
                 throw new CustomException(CustomException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "Constructor not found");
             }
         }
-        public string CreateMoodAnalyserParameterizedObject(string className, string constructor, string message)
+        public object CreateMoodAnalyserParameterizedObject(string className, string constructor, string message)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace UC5_Parameter_Constructor
                     {
                         ConstructorInfo constructorInfo = type.GetConstructor(new[] { typeof(string) });
                         var obj = constructorInfo.Invoke(new object[] { message });
-                        return Convert.ToString(obj);
+                        return obj;
                     }
                     else
                     {
@@ -60,6 +60,24 @@ namespace UC5_Parameter_Constructor
 
             }
             return default;
+        }
+
+        public string InvokeAnalyserMethod(string message, string methodName)
+        {
+            try
+            {
+                Type type = typeof(MoodAnalyser);
+
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                object moodAnalyserObject = factory.CreateMoodAnalyserParameterizedObject("MoodAnalyserProblem2.MoodAnalyser", "MoodAnalyser", message);
+                object info = methodInfo.Invoke(moodAnalyserObject, null);
+                return info.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new CustomException(CustomException.ExceptionType.METHOD_NOT_FOUND, "Method not found");
+            }
         }
 
     }
